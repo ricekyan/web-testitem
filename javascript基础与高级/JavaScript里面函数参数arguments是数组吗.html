@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>JavaScript里面函数参数arguments是数组吗</h2>
+    <pre>
+        //一、arguments的面貌
+
+        //在javascript中所有的函数内部都包含了一个隐藏的变量叫arguments;它存放着所有传递到这个函数中的参数；
+        //那么我们打开实例看看arguments的输出形式
+
+
+        // (function fn1() {
+        //     console.log(arguments)
+        // })(1, 2, 3, 4)
+        //打印是[1,2,3,4]
+
+
+        //结果好像是类似数组的形式打印在控制台，相信大多数人包括我看到这种输出就会认为arguments是一个数组，那么既然是数组就可以用数组的一些方法了吧，再看下一个例子；
+        // (function fn2() {
+        //     arguments.push(5)
+        //     console.log(arguments)
+        // })(1, 2, 3, 4)
+        //结果报错了- -！；
+
+
+        //那我们就会有一个疑惑了，既然是数组为什么不能用push方法呢，其他的像pop，slice也不行么，是的，都不行，虽然arguments也能通过下标的形式获取到对应位置的参数，当本质上不算是真正的数组；
+
+        //我们通过instanceof打印看看它是不是Array的孩子
+        (function fn3() {
+            console.log(arguments instanceof Array)
+        })()
+        //打印false
+
+        //果不其然真不是数组，那么我们就会联想到它就是个对象了；
+        //虽然它也能用for循环遍历到里面的参数，但把它转为真正的数组才是更好的选择；
+    </pre>
+</body>
+
+</html>

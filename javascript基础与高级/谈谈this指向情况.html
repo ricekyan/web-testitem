@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>谈谈this指向情况？</title>
+</head>
+<body>
+    <h3>谈谈this指向情况？</h3>
+    <pre>
+        1.在全局作用域下:
+            this指向全局对象window
+        
+        2.在函数内部(非严格模式):
+            this指向函数的调用者
+        
+        3.严格模式下:
+            this为: undefined
+        
+        4.call , apply , bing 改变this指向:
+            (1)call及apply方法可以改变this的指向,其指向call及apply的第一个参数(如果第一个参数不是对象，JavaScript内部会尝试将其转换成对象然后指向它。);
+            (2)bing方法中 函数将被永远绑定在其第一个参数对象上， 而无论其在什么情况下被调用。
+        
+        5.setTimeout & setInterval 中的this:
+            在定时器及延时函数中  this指向全局对象  window
+        
+        6.ES6中this的指向文件:
+            箭头函数不绑定this， 它会捕获其所在（即定义的位置）上下文的this值， 作为自己的this值
+    </pre>
+</body>
+</html>

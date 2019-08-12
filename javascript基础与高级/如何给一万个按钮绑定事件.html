@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="btns" style="width:60px;margin:20px"></div>
+    <script>
+        
+        function bindEvent() {
+            for (var i = 0; i < 100; i++) {
+                var btn = document.createElement('button');
+                btn.innerText = "btn" + i;
+                document.getElementsByClassName('btns')[0].appendChild(btn);
+            }
+            document.getElementsByClassName('btns')[0].addEventListener('click', function (e) {
+                var e = e || window.event;
+                var target = e.target || e.srcElement;
+                if (target.tagName == 'BUTTON') {
+                    alert(target.innerText);
+                }
+            }, false)
+        }
+        bindEvent()
+
+
+        // 使用事件委托, 利用了事件的冒泡机制. 
+
+        // 针对btn绑定事件就一定要判断点击的target是不是btn, 如果做这一步, 点击被委托的父容器其他地方也会触发事件.
+
+        // 不要阻止冒泡事件!
+    </script>
+
+</body>
+
+</html>

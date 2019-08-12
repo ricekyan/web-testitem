@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <style>
+        pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>简述Javascript 中的垃圾回收机制？</h2>
+    <pre>
+        在JavaScript中有两种垃圾回收的方式，标记清除与引用计数
+        1、标记清除(mark and sweep)：
+            这是javascript中最常用的垃圾回收方式。当变量进入执行环境的时候，比如在函数中声明一个变量，
+            垃圾回收器将其标记为"进入环境"。 当变量离开环境的时候(函数执行结束)，将其标记为"离开环境"。
+            垃圾回收器会在运行的时候给存储在内存中的所有变量加上标记，然后去掉环境中的变量，以及被环境中变量
+            所引用的变量(闭包)的标记。在完成这些之后仍然存在的标记就是要删除的变量。
+
+            var m = 0,n = 19            // 把 m,n,add() 标记为进入环境。
+            add(m, n)                   // 把 a, b, c标记为进入环境。
+            console.log(n)              // a,b,c标记为离开环境，等待垃圾回收。
+            function add(a, b) {
+              a++
+              var c = a + b
+              return c
+            }
+        2、引用计数(reference counting)
+            在低版本的IE中经常会发生内存泄漏，很多时候就是因为它采用引用计数的方式进行垃圾回收。引用计数的策略是跟踪记录每个值被使用的次数。
+            当声明了一个变量并将一个引用类型赋值给该变量的时候，这个值的引用次数就加1。如果该变量的值变成了另外一个，则这个值的引用次数就减1。
+            当这个值的引用次数变为0的时候，说明没有变量在使用，这个值没法被访问。 因此，可以将它占用的空间回收，这样垃圾回收器会在运行的时候清理引用次
+            数为0的值占用的空间。在IE中虽然JavaScript对象通过标记清除的方式进行垃圾回收，但是BOM与DOM对象是用引用计数的方式回收垃圾的。
+            也就是说，只要涉及BOM和DOM，就会出现循环引用问题。
+    </pre>
+</body>
+</html>

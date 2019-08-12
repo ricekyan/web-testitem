@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1" width="800" height="200" align="center" cellspacing="0" cellpadding="0">
+        <caption>
+            <h2>基础选择器</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>用法</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td>id选择器</td>
+                <td>$("#id")</td>
+                <td>获取指定id的元素</td>
+            </tr>
+            <tr align="center">
+                <td>全选选择器</td>
+                <td>$("*")</td>
+                <td>匹配所有元素</td>
+            </tr>
+            <tr align="center">
+                <td>类选择器</td>
+                <td>$(".class")</td>
+                <td>获取同一类class的元素</td>
+            </tr>
+            <tr align="center">
+                <td>标签选择器</td>
+                <td>$("div")</td>
+                <td>获取同一类标签的所有元素</td>
+            </tr>
+            <tr align="center">
+                <td>并集选择器</td>
+                <td>$("div,p,li")</td>
+                <td>选取多个元素</td>
+            </tr>
+            <tr align="center">
+                <td>交集选择器</td>
+                <td>$("li.current")</td>
+                <td>交集元素</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <table border="1" width="800" height="100" align="center" cellspacing="0" cellpadding="0">
+        <caption>
+            <h2>层级选择器</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>用法</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td>子代选择器</td>
+                <td>$("ul>li")</td>
+                <td>使用大于号获取亲儿子层级的元素，注意：不能获取孙子层级的元素</td>
+            </tr>
+            <tr align="center">
+                <td>后代选择器</td>
+                <td>$("ul li")</td>
+                <td>使用空格代表后代选择器，获取ul下面的所有li元素，包括孙子</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- 基础选择器和层级选择器案例代码
+        <div>我是div</div>
+        <div class="nav">我是nav div</div>
+        <p>我是p</p>
+        <ul>
+            <li>我是ul 的</li>
+            <li>我是ul 的</li>        
+            <li>我是ul 的</li>
+        </ul>
+        <script>
+            $(function() {
+                console.log($(".nav"));
+                console.log($("ul li"));
+            })
+        </script> -->
+
+
+
+    <table border="1" width="800" height="200" align="center" cellspacing="0" cellpadding="0">
+        <caption>
+            <h2>筛选选择器</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>用法</th>
+                <th>描述</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td>:first</td>
+                <td>$("li:first")</td>
+                <td>获取第一个li元素</td>
+            </tr>
+            <tr align="center">
+                <td>:last</td>
+                <td>$("li:last")</td>
+                <td>获取最后一个li元素</td>
+            </tr>
+            <tr align="center">
+                <td>:eq(index)</td>
+                <td>$("li:eq(2)")</td>
+                <td>获取到的li元素中，选择索引号为2的元素，索引号从0开始</td>
+            </tr>
+            <tr align="center">
+                <td>:odd</td>
+                <td>$("li:odd")</td>
+                <td>获取到的li元素中，选择索引号为奇数的元素</td>
+            </tr>
+            <tr align="center">
+                    <td>:even</td>
+                    <td>$("li:even")</td>
+                    <td>获取到的li元素中，选择索引号为偶数的元素</td>
+                </tr>
+        </tbody>
+    </table>
+
+    <!-- <ul>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+        </ul>
+        <ol>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+            <li>多个里面筛选几个</li>
+        </ol>
+        <script>
+            $(function() {
+                $("ul li:first").css("color", "red");
+                $("ul li:eq(2)").css("color", "blue");
+                $("ol li:odd").css("color", "skyblue");
+                $("ol li:even").css("color", "pink");
+            })
+        </script> -->
+</body>
+
+</html>

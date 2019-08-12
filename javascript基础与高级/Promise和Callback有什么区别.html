@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>  
+    <h1>1.Promise和Callback有什么区别</h1>
+    <h2>callback</h2>
+    <p>在javascript中分为同步API跟异步API</p> 
+    <p>在异步API中我们无法通过返回值的方式拿到异步API的执行结果，而是通过回调函数(callback)拿到结果</p> 
+    <p>callback回调函数就是将一个函数A以参数的形式传递给另一个函数B，而在函数B中执行函数A，并将异步代码执行的结果通过参数传递给函数A，这样就能拿到异步API的返回值</p>
+    <p>但是如果有多个异步任务，且异步API后面代码的执行需要依靠当前异步API的执行结果时，就会出现回调函数嵌套，当函数嵌套过多时，就会产生所谓的回调地狱的问题，<br> 代码逻辑复杂，可读性差并且代码不易维护，因此需要用到promise对象</p>
+    
+    <h2>promise</h2>
+    <p>promise是异步编程的一种解决方案(es6),可解决回调地狱的问题</p>
+    <p>Promise本身是一个构造函数，需要使用new运算符创建Promise构造函数的实例对象</p>
+
+    <h3>promise的优点</h3>
+    <ul>
+        <li>代码结构更加扁平且更可读，清晰明了。</li>
+        <li>能解决回调地狱问题。</li>
+        <li>可将数据请求和业务逻辑分离开来。</li>
+        <li>便于管理维护。</li>
+        <li>能更好的捕获错误</li>
+    </ul>
+   
+
+
+
+
+
+
+
+。
+</body>
+</html>

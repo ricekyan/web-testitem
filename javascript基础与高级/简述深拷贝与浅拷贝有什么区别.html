@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>简述深拷贝与浅拷贝有什么区别</h2>
+    <pre>
+        首先，在进行认识深拷贝和浅拷贝之前，我们需要了解到W3关于数据类型的区分
+                数据类型：
+                         基本类型：    String/Number/Boolean/Null/undefined/Symbol(ES6规范引入的一项新特性，它的功能类似于一种标识唯一性的ID)/
+                                  直接存储在栈中的数据
+                         引用类型：   Object，Array等
+                                  存储的时是对象在栈中的引用，真实的数据存放在堆内存里
+        
+        接下来，我们开始了解深拷贝和浅拷贝：
+        　------*深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的
+        
+               浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。
+               深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。
+    </pre>
+</body>
+</html>

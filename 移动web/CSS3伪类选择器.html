@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3伪类选择器</title>
+    <style>
+        h1 {
+            color: brown;
+            text-align: center;
+        }
+
+        h2 {
+            color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS3伪类选择器</h1>
+    <h2>1.UI元素状态伪类选择器</h2>
+    UI元素状态伪类选择器主要用于根据UI元素的状态进行筛选，UI元素状态伪类选择器有如下几个。
+    <table border="1" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="width:141px;"><strong>示例</strong></td>
+                <td style="width:229px;"><strong>描述</strong></td>
+                <td style="width:154px;"><strong>示例</strong></td>
+                <td style="width:263px;"><strong>描述</strong></td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:link</td>
+                <td style="width:229px;">选择链接元素</td>
+                <td style="width:154px;">:visited</td>
+                <td style="width:263px;">访问过链接元素后的状态</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:hover</td>
+                <td style="width:229px;">鼠标悬停其上的元素</td>
+                <td style="width:154px;">:ative</td>
+                <td style="width:263px;">鼠标点击时触发的事件</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:focus</td>
+                <td style="width:229px;">当前获取焦点的元素</td>
+                <td style="width:154px;">:enabled</td>
+                <td style="width:263px;">元素处于可用状态</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:disabled</td>
+                <td style="width:229px;">元素处于不可用状态</td>
+                <td style="width:154px;">:checked</td>
+                <td style="width:263px;">元素处于选中状态</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:selection</td>
+                <td style="width:229px;">当前被选中的内容</td>
+                <td style="width:154px;">:indeterminate</td>
+                <td style="width:263px;">当前选中状态不明确的元素</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:read-only</td>
+                <td style="width:229px;">处于只读状态的元素</td>
+                <td style="width:154px;">:read-write</td>
+                <td style="width:263px;">处于读写状态的元素</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:required</td>
+                <td style="width:229px;">具有必填要求的元素</td>
+                <td style="width:154px;">:optional</td>
+                <td style="width:263px;">无必须要求填写的元素</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:valid</td>
+                <td style="width:229px;">能通过输入校验的元素</td>
+                <td style="width:154px;">:invalid</td>
+                <td style="width:263px;">不能通过输入校验的元素</td>
+            </tr>
+            <tr>
+                <td style="width:141px;">:in-range</td>
+                <td style="width:229px;">当前处于指定范围的元素</td>
+                <td style="width:154px;">:out-of-range</td>
+                <td style="width:263px;">当前处于超出范围的元素</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>2.结构伪类选择器</h2>
+    结构伪类选择器是指根据HTML元素之间的结构关键进行筛选的伪类选择器。
+    <h3> :root伪类选择器</h3>
+    用于匹配HTML文档的根元素，根元素只能是<html>元素。
+    <h3> :first-child、:last-child、:nth-child、:nth-last-child和:only-child</h3>
+    这组选择器依次要求匹配该元素必须是其父元素的第一个子节点、最后一个子节点、第n个子节点、倒数第n个子节点、唯一的子节点，这是这组选择器的共同特点
+    <h4> 对于nth-child和nth-last-child两个伪类选择器，它们的功能不止于此，还支持奇数、偶数节点和xn+y的用法。</h4>
+    <table border="1" cellpadding="0" cellspacing="0" style="width:700px;">
+        <tbody>
+            <tr>
+                <td>选择器：nth-child(odd/event)</td>
+                <td style="width:423px;">父元素的第奇数个/偶数个子节点的元素</td>
+            </tr>
+            <tr>
+                <td>选择器：nth-last-child(odd/event)</td>
+                <td style="width:423px;">父元素的倒数奇数个/偶数个子节点的元素</td>
+            </tr>
+            <tr>
+                <td>选择器：nth-child(xn+y)</td>
+                <td style="width:423px;">父元素的第xn+y个子节点</td>
+            </tr>
+            <tr>
+                <td>选择器：nth-last-child(xn+y)</td>
+                <td style="width:423px;">父元素的倒数第xn+y个子节点</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>:first-of-type、:flast-of-type、:nth-of-type、:nth-last-of-type和:only-of-type</h4>
+    这组伪类选择器与上面那组xxx-child有些类似，但这组并不要求是父元素的第1个、倒数n个、唯一元素，只要求它们与其有共同类型、同级元素的第1个、倒数n个、唯一元素。也跟上组一样拥有奇偶节点和xn+y的用法。
+    <h4>:empty伪类选择器</h4>
+    empty伪类选择器要求该元素只能是空元素，不能包含子节点，也不能包含文本内容（连空格都不行）
+    <h3> :lang伪类选择器</h3>
+    lang伪类选择器要求匹配的内容必须是指定语言的元素。对使用多语言版本的网站，可以根据不同语言版本，设置不同的样式
+    <h2>3.其他伪类选择器</h2>
+    <h3>否定伪类选择器</h3>
+    not伪类选择器就是用两个选择器做减法，选择器匹配非指定元素或者选择器的每个元素，下面将示范它的用法
+    <h3>层次选择器</h3>
+    层次选择器是通过DOM元素间的层次关系获取元素，其主要的层次关系包括后代、父子、相邻、兄弟关系，通过其中基类关系可以方便快捷地定位元素，以下就是层次选择器的类型。
+    <table border="1" cellpadding="0" cellspacing="0">
+        <tbody>
+            <tr>
+                <td style="width:226px;"><strong>类型</strong></td>
+                <td style="width:120px;"><strong>示例</strong></td>
+                <td style="width:487px;"><strong>描述</strong></td>
+            </tr>
+            <tr>
+                <td style="width:226px;">后代选择器</td>
+                <td style="width:120px;">div p</td>
+                <td style="width:487px;">选择 &lt;div&gt; 元素内部的所有 &lt;p&gt; 元素</td>
+            </tr>
+            <tr>
+                <td style="width:226px;">子选择器</td>
+                <td style="width:120px;">div&gt;p</td>
+                <td style="width:487px;">选择父元素为 &lt;div&gt; 元素的所有 &lt;p&gt; 元素</td>
+            </tr>
+            <tr>
+                <td style="width:226px;">相邻兄弟选择器</td>
+                <td style="width:120px;">div+p</td>
+                <td style="width:487px;">选择紧接在 &lt;div&gt; 元素之后的所有 &lt;p&gt; 元素</td>
+            </tr>
+            <tr>
+                <td style="width:226px;">通用选择器</td>
+                <td style="width:120px;">p~ul</td>
+                <td style="width:487px;">选择前面有 &lt;p&gt; 元素的每个 &lt;ul&gt; 元素</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

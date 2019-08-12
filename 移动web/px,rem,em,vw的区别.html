@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>px,rem,em,vw的区别</title>
+</head>
+<style>
+    h1{
+        color: brown;
+    }
+    h2{
+        color: chocolate;
+    }
+    h3{
+        color: cornflowerblue;
+    }
+</style>
+<br>
+<h1>px</h1>
+<p>px就是pixel像素的缩写，相对长度单位，网页设计常用的基本单位。像素px是相对于显示器屏幕分辨率而言的</p>
+<h1>em</h1>
+<p>em是相对长度单位。相对于当前对象内文本的字体尺寸（参考物是父元素的font-size）</br>
+
+    如当前父元素的字体尺寸未设置，则相对于浏览器的默认字体尺寸</p>
+<h3>特点：</h3>
+<br>　　1. em的值并不是固定的；</br>
+
+　　2. em会继承父级元素的字体大小</p>
+<h1>rem</h1>
+<p>rem是CSS3新增的一个相对单位，rem是相对于HTML根元素的字体大小（font-size）来计算的长度单位</br>
+    如果你没有设置html的字体大小，就会以浏览器默认字体大小，一般是16px</p>
+<h3>优点</h3>
+<p>只需要设置根目录的大小就可以把整个页面的成比例的调好</p>
+<h2>em与rem的区别：</h2>
+<p>rem是相对于根元素（html）的字体大小，而em是相对于其父元素的字体大小</p>
+<h3>两者使用规则：</h3>
+如果这个属性根据它的font-size进行测量，则使用em
+其他的一切事物属性均使用rem
+<h1>vw</h1>
+<p>vw是相对视口（viewport）的宽度而定的，长度等于视口宽度的1/100
+
+    假如浏览器的宽度为200px，那么1vw就等于2px（200px/100）</p>
+</body>
+
+</html>

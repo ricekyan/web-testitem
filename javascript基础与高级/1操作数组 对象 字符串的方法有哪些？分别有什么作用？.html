@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <style>
+        pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>操作数组 对象 字符串的方法有哪些？分别有什么作用？</h2>
+    <pre>
+        一、数组的方法
+            1、concat()    连接两个或更多的数组，并返回结果。
+            eg:
+            const arr1 = [1,2,3];
+            const arr2 = [4,5,6];
+            console.log(arr1.concat(arr2))  //[1,2,3,4,5,6]
+
+            2、join()      把数组的所有元素放入一个字符串，元素通过指定的分隔符进行分隔。
+            eg:
+            const arr = [1,2,3,4];
+            console.log(arr.join());   //1,2,3,4
+
+            3、pop()       删除并返回数组的最后一个元素。
+            eg:
+            const arr = [1,2,3];
+            console.log(arr.pop());   //3
+            console.log(arr);   //[1,2]
+
+            4、push()     向数组的末尾添加一个或更多元素，并返回新的长度。
+            eg:
+            const arr = [1,2,3]
+            console.log(arr.push(4,5))    //5
+
+            5、reverse()      颠倒数组中元素的顺序。
+            eg:
+            const arr = [1,2,3]
+            console.log(arr.reverse())   //[3,2,1]
+
+            6、shift()       删除并返回数组的第一个元素。(会改变数组得长度)。
+            eg:
+            const arr = [1,2,3]
+            console.log(arr.shift(1))   //1
+            console.log(arr.length)     //2
+
+            7、slice()     从某个已有的数组返回选定的元素  arrayObject.slice(start,end)。
+            eg:
+            const arr1 = [1,2,3];
+            const arr2 = [4,5,6,7,8,9];
+            console.log(arr1.slice(1))   //[2,3]
+            console.log(arr2.slice(1,4))   //[5,6,7]
+
+            8、sort()        //对数组的元素进行排序。
+            eg:
+            const arr = [1,3,2];
+            console.log(arr.sort());    //[1,2,3]
+
+            9、splice()          //删除元素，并向数组添加新元素。
+            10、toString()	     //把数组转换为字符串，并返回结果。
+            11、unshift()	     //向数组的开头添加一个或更多元素，并返回新的长度。
+            12、valueOf()	     //返回数组对象的原始值。
+            13、of()             //Array.of方法用于将一组值，转换为数组。
+            14、fill()           //fill(value,start,end)方法用于填充数组，value 为填充值，start 为填充数组元素起点坐标，end 为填充数组元素终点坐标。
+            15、filter()         //filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+            16、map()            //map()方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+            17、reduce()         //reduce()方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。
+            18、some()           //some()方法用于检测数组中的元素是否满足指定条件（函数提供）。
+            19、every()          //every()方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。
+            20、find()           //find()方法返回通过测试（函数内判断）的数组的第一个元素的值。
+            21、findIndex()      //findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+            22、includes()       //includes() 方法用于判断字符串是否包含指定的子字符串。
+            23、forEach()        //forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。
+            24、entries()        //entries()方法返回一个数组的迭代对象，该对象包含数组的键值对 (key/value),迭代对象中数组的索引值作为 key， 数组元素作为 value。
+            25、keys()           //keys()方法用于从数组创建一个包含数组键的可迭代对象。如果对象是数组返回 true，否则返回 false。
+            26、values()         //返回一个新的Array迭代对象，包含数组每个索引值
+            参考链接     1、https://www.runoob.com/jsref/jsref-obj-array.html  2、https://segmentfault.com/a/1190000017715638#articleHeader11
+
+        二、对象的方法
+            1、Object.hasOwnProperty()               //检查属性是否被继承
+            2、Object.isPrototypeOf()                //一个对象是否是另一个对象的原型
+            3、Object.propertyIsEnumerable()         //是否可以通过 for/in 循环看到属性
+            4、Object.toLocaleString()               //返回对象的本地字符串表示
+            5、Object.toString()                     //定义一个对象的字符串表示
+            6、Object.valueOf()                      //指定对象的原始值
+
+        三、字符串的方法
+            1、charAt()	            //返回在指定位置的字符。
+            2、charCodeAt()	        //返回在指定的位置的字符的 Unicode 编码。
+            3、concat()	            //连接两个或更多字符串，并返回新的字符串。
+            4、fromCharCode()	    //将 Unicode 编码转为字符。
+            5、indexOf()	        //返回某个指定的字符串值在字符串中首次出现的位置。
+            6、includes()	        //查找字符串中是否包含指定的子字符串。
+            lastIndexOf()	        //从后向前搜索字符串，并从起始位置（0）开始计算返回字符串最后出现的位置。
+            match()	                //查找找到一个或多个正则表达式的匹配。
+            repeat()	            //复制字符串指定次数，并将它们连接在一起返回。
+            replace()	            //在字符串中查找匹配的子串， 并替换与正则表达式匹配的子串。
+            search()	            //查找与正则表达式相匹配的值。
+            slice()	                //提取字符串的片断，并在新的字符串中返回被提取的部分。
+            split()	                //把字符串分割为字符串数组。
+            startsWith()	        //查看字符串是否以指定的子字符串开头。
+            substr()	            //从起始索引号提取字符串中指定数目的字符。
+            substring()	            //提取字符串中两个指定的索引号之间的字符。
+            toLowerCase()	        //把字符串转换为小写。
+            toUpperCase()	        //把字符串转换为大写。
+            trim()	                //去除字符串两边的空白
+            toLocaleLowerCase()	    //根据本地主机的语言环境把字符串转换为小写。
+            toLocaleUpperCase()	    //根据本地主机的语言环境把字符串转换为大写。
+            valueOf()	            //返回某个字符串对象的原始值。
+            toString()	            //返回一个字符串。
+
+    </pre>
+    <script>
+        // const arr1 = [1,2,3];
+        // const arr2 = [4,5,6];
+        // console.log(arr1.concat(arr2))
+
+        // const arr = [1,2,3,4];
+        // console.log(arr.join());
+
+        // const arr = [1,2,3];
+        // console.log(arr.pop());
+        // console.log(arr);
+
+        // const arr = [1,2,3];
+        // console.log(arr.push(4,5));
+
+        // const arr = [1,2,3];
+        // console.log(arr.reverse())
+
+        // const arr = [1,2,3];
+        // console.log(arr.shift());
+        // console.log(arr.length);
+
+        // const arr1 = [1,2,3];
+        // const arr2 = [4,5,6,7,8,9];
+        // console.log(arr1.slice(1));   //[2,3]
+        // console.log(arr2.slice(1,4));   //[5,6,7]
+
+        // const arr = [1,3,2];
+        // console.log(arr.sort());
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+          text-indent: 2em;  
+        }
+        div{
+            margin: 0 auto;
+            width: 60%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div>
+    <pre>
+        <h2>ajax原理</h2>
+        ajax是基于网页和服务器进行异步通信的技术。
+
+        ​	基本原理是，通过XMLHttpRequest向服务器发送异步请求，获得服务器返回的数据，利用js更新页面。其核心功能在于XMLHttpRequest对象。
+
+        <h2>工作流程</h2>
+        1.创建ajax对象
+        var xhr = new XMLHttpRequest();
+
+        2.告诉ajax请求地址和请求方式
+        xhr.open('get','http://www.example.com')
+
+        3.发送请求
+        xhr.send()
+        
+        4.服务器给客户端相应数据
+        xhr.onload = function(){
+            console.log(xhr.response)
+        }
+
+
+
+    </pre>
+</div>
+
+
+    
+</body>
+</html>

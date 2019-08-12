@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <style>
+        pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>es6新特性？</h2>
+    <pre>
+        1.类（class）
+            对熟悉Java，object-c，c#等纯面向对象语言的开发者来说，都会对class有一种特殊的情怀。
+            ES6 引入了class（类），让JavaScript的面向对象编程变得更加简单和易于理解
+        2.模块化(Module)
+            ES5不支持原生的模块化，在ES6中模块作为重要的组成部分被添加进来。模块的功能主要由 export 和 import 组成。
+            每一个模块都有自己单独的作用域，模块之间的相互调用关系是通过 export 来规定模块对外暴露的接口，通过import来引用
+            其它模块提供的接口。同时还为模块创造了命名空间，防止函数的命名冲突。
+        3.箭头（Arrow）函数
+            这是ES6中最令人激动的特性之一。=>不只是关键字function的简写，它还带来了其它好处。箭头函数与包围它的代码共享同一个this,
+            能帮你很好的解决this的指向问题。有经验的JavaScript开发者都熟悉诸如var self = this;或var that = this这种引用外围this的模式。
+            但借助=>，就不需要这种模式了。
+        4.函数参数默认值
+            ES6支持在定义函数的时候为其设置默认值：
+            function foo(height = 50, color = 'red')
+            {
+                // ...
+            }
+            不使用默认值：
+            function foo(height, color)
+            {
+                var height = height || 50;
+                var color = color || 'red';
+                //...
+            }
+        5.模板字符串
+            不使用模板字符串：
+            var name = 'Your name is ' + first + ' ' + last + '.'
+            使用模板字符串：
+            var name = `Your name is ${first} ${last}.`
+        6.解构赋值
+            获取数组中的值：
+            var foo = ["one", "two", "three", "four"];
+            var [one, two, three] = foo;
+            console.log(one); // "one"
+            console.log(two); // "two"
+            console.log(three); // "three"
+            //如果你要忽略某些值，你可以按照下面的写法获取你想要的值
+            var [first, , , last] = foo;
+            console.log(first); // "one"
+            console.log(last); // "four"
+            //你也可以这样写
+            var a, b; //先声明变量
+            [a, b] = [1, 2];
+            console.log(a); // 1
+            console.log(b); // 2
+
+            获取对象中的值
+            const student = {
+              name:'Ming',
+              age:'18',
+              city:'Shanghai'
+            };
+            const {name,age,city} = student;
+            console.log(name); // "Ming"
+            console.log(age); // "18"
+            console.log(city); // "Shanghai"
+        7.延展操作符(Spread operator)
+            延展操作符...可以在函数调用/数组构造时, 将数组表达式或者string在语法层面展开；还可以在构造对象时, 将对象表达式按key-value的方式展开。
+            拷贝数组eg:
+            var arr = [1, 2, 3];
+            var arr2 = [...arr];        // 等同于 arr.slice()
+            arr2.push(4);
+            console.log(arr2)           //[1, 2, 3, 4]
+        8.对象属性简写
+            不使用ES6：
+            const name='Ming',age='18',city='Shanghai';
+            const student = {
+                name:name,
+                age:age,
+                city:city
+            };
+            console.log(student);//{name: "Ming", age: "18", city: "Shanghai"}
+            使用ES6：
+            const name='Ming',age='18',city='Shanghai';
+            const student = {
+                name,
+                age,
+                city
+            };
+            console.log(student);//{name: "Ming", age: "18", city: "Shanghai"}
+        9.Promise
+            Promise 是异步编程的一种解决方案，比传统的解决方案callback更加的优雅。它最早由社区提出和实现的，
+            ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。
+            不使用ES6：
+            setTimeout(function()
+            {
+                console.log('Hello'); // 1秒后输出"Hello"
+                setTimeout(function()
+                {
+                    console.log('Hi'); // 2秒后输出"Hi"
+                }, 1000);
+            }, 1000);
+            使用ES6：
+            var waitSecond = new Promise(function(resolve, reject)
+            {
+                setTimeout(resolve, 1000);
+            });
+
+            waitSecond
+                .then(function()
+                {
+                  console.log("Hello"); // 1秒后输出"Hello"
+                  return waitSecond;
+                })
+                .then(function()
+                {
+                    console.log("Hi"); // 2秒后输出"Hi"
+                });
+        10.支持let与const
+            在之前JS是没有块级作用域的，const与let填补了这方便的空白，const与let都是块级作用域。
+            使用var定义的变量为函数级作用域：
+            {
+              var a = 10;
+            }
+            console.log(a); // 输出10
+            使用let与const定义的变量为块级作用域：
+            {
+              let a = 10;
+            }
+            console.log(a); //-1 or Error“ReferenceError: a is not defined”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </pre>
+</body>
+</html>

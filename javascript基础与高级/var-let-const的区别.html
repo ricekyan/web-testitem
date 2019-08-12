@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>this的指向问题</h2>
+    <pre>
+        //var 声明全局变量，换句话理解就是，声明在for循环中的变量，跳出for循环同样可以使用。
+        //var定义的变量可以修改，如果不初始化会输出undefined，不会报错。
+        var a = 1;
+        // var a;//不会报错
+        console.log('函数外var定义a：' + a); //可以输出a=1
+        function change() {
+            a = 4;
+            console.log('函数内var定义a：' + a); //可以输出a=4
+        }
+        change();
+        console.log('函数调用后var定义a为函数内部修改值：' + a); //可以输出a=4
+        //声明在for循环内部的sum，跳出for循环一样可以使用，不会报错正常弹出结果
+        for (var i = 0; i <= 1000; i++) {
+            var sum = 0;
+            sum += i;
+        }
+        alert(sum);
+
+
+        //let：声明块级变量，即局部变量。 
+        //在上面的例子中，跳出for循环，再使用sum变量就会报错，有着严格的作用域，变量只作用域当前隶属的代码块，不可重复定义同一个变量，不可在声明之前调用，必须先定义再使用，会报错，循环体中可以用let
+        //let是块级作用域，函数内部使用let定义后，对函数外部无影响。
+        let c = 3;
+        console.log('函数外let定义c：' + c); //输出c=3
+        function change() {
+            let c = 6;
+            console.log('函数内let定义c：' + c); //输出c=6
+        }
+        change();
+        console.log('函数调用后let定义c不受函数内部定义影响：' + c); //输出c=3
+        //注意：必须声明'use strict';后才能使用let声明变量否则浏览并不能显示结果,
+
+         
+
+        //const：用于声明常量，也具有块级作用域 ，也可声明块级。const定义的变量不可以修改，而且必须初始化。
+        const b = 2; //正确
+        // const b;//错误，必须初始化 
+        console.log('函数外const定义b：' + b); //有输出值
+        // b = 5;
+        // console.log('函数外修改const定义b：' + b);//无法输出
+        const PI = 3.14;
+        //它和let一样，也不能重复定义同一个变量，const一旦定义，无法修改
+    </pre>
+</body>
+
+</html>

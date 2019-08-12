@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+          text-indent: 2em;  
+        }
+        div{
+            margin: 0 auto;
+            width: 60%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div>
+    <h2>在jQuery中如何注册事件？</h2>
+    <p>普通注册方式：操作简单、但是无法做事件委托且不可实现事件解绑</p>
+    <p>
+        语法：element.事件（function(){ }） </p>
+    <pre>
+            因为普通注册方式的不足，jQuery又创建了多个新的事件绑定方法bind()/live()/delegate()/on(),on()方法是其中最好用的，其余方法基本被弃用。
+
+           使用on()注册事件：
+            
+            ​	on()优势：
+            
+             1.可以绑定多个事件，多个事件处理程序
+
+           
+            事件处理程序不同
+            $('div').on(){
+                mouseover:function(){},
+                mouseout:function(){},
+                click:function(){}
+            }
+            处理程序相同
+            $('div').on('mouseover mouseout ',function(){
+                
+            })
+           
+            
+             2.可以事件委派操作。事件委派的定义是，把原来加给子元素的事件绑定到父元素的身上，就是把事件委派给父元素,通过事件冒泡进行事件触发
+            
+             
+              $('ul').on('click','li',function(){
+                  
+              })
+             
+            
+             3.动态创建的元素，click()没有办法绑定事件，on()可以给动态生成的元素绑定事件
+            
+             
+              $('div').on('click','p',function(){
+              
+                  alert('给动态生成的元素绑定事件')
+              
+              })
+            
+            
+    </pre>
+</div>
+
+
+    
+</body>
+</html>

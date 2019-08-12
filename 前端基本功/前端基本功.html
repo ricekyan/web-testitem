@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3 {
+            color: #ff3040;
+        }
+
+        h4 {
+            color: rgb(0, 150, 170)
+        }
+
+        .container1 {
+            display: flex;
+            height: 100px;
+        }
+
+        .left,
+        .right {
+            width: 300px;
+            background-color: #ccc;
+        }
+
+        .center {
+            flex: 1;
+            background-color: pink;
+        }
+
+        .second {
+            border: 1px solid #bbb;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="second">
+        <h3 id="x1"> 1 假设高度默认100px ，请写出三栏布局，其中左栏、右栏各为300px，中间自适应。</h3>
+        <h4>1.1弹性布局 左右宽固定 中间flex=1,分配剩余全部空间</h4>
+        <p> .container {
+            display: flex;
+            height: 100px;
+            }
+        </p>
+        <div class="container1">
+            <div class="left">
+                .left { <br>
+                width: 300px; <br>
+                background-color: #ccc;
+                }
+
+            </div>
+            <div class="center">
+                .center { <br>
+                flex: 1; <br>
+                background-color: pink;
+                }
+            </div>
+            <div class="right">
+                .right { <br>
+                width: 300px; <br>
+                background-color: #ccc;
+                }
+            </div>
+        </div>
+        <hr>
+        <h4>1.2定位:子绝父相,三个子盒子均给绝对定位,左边:left为0;右:right为0;中间:左右为300 </h4>
+        <p> .parent {position: relative; height: 100px" } </p>
+        <p>子盒子共同代码: {position: absolute; height: 100px}</p>
+        <div class="parent" style="position: relative; height: 100px">
+            <div class="left" style="width: 300px; position: absolute; left: 0; background-color: #ccc; height: 100px">
+                <span>left: 0 </span>
+                <p>width: 300px </p> background-color: #ccc;
+            </div>
+            <div class="center"
+                style=" left: 300px;  position: absolute;right: 300px; background-color: pink; height: 100px">
+                <span>left: 300px </span>
+                <p>right: 300px </p> background-color: pink;
+            </div>
+            <div class="right"
+                style="width: 300px; position: absolute; right: 0; background-color: #ccc; height: 100px">
+                <span>right: 0 </span>
+                <p>width: 300px </p> background-color: #ccc;
+            </div>
+        </div>
+        <hr>
+        <h4>1.3浮动: 左右两个盒子浮动</h4>
+        <section class="sec1">
+            <style>
+                .sec1 .left {
+                    float: left;
+                    width: 300px;
+                    height: 100px;
+                    background-color: #ccc;
+                }
+
+                .sec1 .right {
+                    float: right;
+                    width: 300px;
+                    height: 100px;
+                    background-color: #ccc;
+                }
+
+                .sec1 .center {
+                    background-color: pink;
+                    height: 100px;
+                }
+            </style>
+            <div class="left"> float: left;
+                <p> width: 300px; <br>
+                    height: 100px; <br>
+                    background-color: pink;
+                </p>
+            </div>
+            <div class="right">
+                float: right;
+                <p> width: 300px; <br>
+                    height: 100px; <br>
+                    background-color: deepskyblue;
+                </p>
+            </div>
+            <div class="center">浮动 ： center部分
+                <p> background-color: pink; <br>
+                    height: 100px;</p>
+            </div>
+        </section>
+    </div>
+    <hr>
+    <div class="second">
+        <h3  id="x2">2 简述盒子模型</h3>
+        <p>
+            （1）两种， IE 盒子模型、标准 W3C 盒子模型；IE 的content部分包含了 border 和 pading; <br>
+            （2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border); <br>
+            (3)可视区域:IE 盒子模型(content);标准 W3C 盒子模型(content+padding+border)
+        </p>
+    </div>
+    <div class="second">
+        <h3  id="x3">3.display与visibility有什么区别</h3>
+        <p>
+            (1)同:在功能上都是实现元素的隐藏和显示(display:none; visibility:hidden); <br>
+            (2)异:display：none在隐藏后不占据空间(HTML元素（对象）的宽度、高度等各种属性值都将“丢失”;); <br>
+            visibility：hidden在隐藏的时候会占据原有位置(HTML元素（对象）仅仅是在视觉上看不见（完全透明))
+        </p>
+    </div>
+    <div class="second">
+        <h3  id="x4"> 4 CSS引入的方式有哪些? link和@import的区别是?</h3>
+        <p>
+            (1) CSS的引入方式共有三种：行内样式、内部样式表、外部样式表; <br>
+            (2) Link属于html标签，而@import是CSS中提供的; <br>
+            (3) 在页面加载的时候，link会同时被加载，而@import引用的CSS会在页面加载完成后才会加载引用的CSS <br>
+            (4) @import只有在ie5以上才可以被识别，而link是html标签，不存在浏览器兼容性问题 <br>
+            (5) Link引入样式的权重大于@import的引用（@import是将引用的样式导入到当前的页面中）
+        </p>
+    </div>
+    <div class="second">
+        <h3  id="x5">5.清除浮动的几种方式，各自的优缺点</h3>
+        <h4> 5.1父级div定义 height</h4>
+        <p>原理：父级 div手动定义 height，就解决了父级 div无法自动获取到高度的问题。 简单、
+            代码少、容易掌握 ，但只适合高度固定的布局.</p>
+        <h4> 5.2结尾处加空 div标签 clear：both</h4>
+        <p>原理：在浮动元素的后面添加一个空div兄弟元素，利用 css 提高的clear：both清除浮动，
+            让父级div能自动获取到高度 ，如果页面浮动布局多，就要增加很多空 div，让人感觉很
+            不好 .</p>
+        <h4> 3、父级div定义 伪元素：after 和 zoom</h4>
+        <p>清除浮动代码代码: 
+                .clearfix：after{
+                content：""；  display：block； visibility：hidden； height：0；line-height：0； clear：both;}
+                .clearfix{*zoom：1}</p>
+        <p>原理：IE8以上和非 IE浏览器才支持：after，原理和方法 2有点类似，zoom(IE专有属性)
+                可解决ie6，ie7 浮动问题 ，推荐使用，建议定义公共类，以减少CSS 代码。</p>
+        <h4>5.4父级div定义 overflow：hidden</h4>
+        <p>超出盒子部分会被隐藏，不推荐使用.</p>
+        <h4>5.5双伪元素法</h4>
+            <p> 代码: .clearfix：before，.clearfix：after { content： ""；   display： block；  clear：both;} <br>
+                    .clearfix {zoom： 1；}</p>
+    </div>
+    <div class="second">
+        <h3  id="x6">6.行内元素有哪些 块元素有哪些</h3>
+        <p>
+                行内元素有：a b span em i s strong ins u del (一行占据多个;宽高设置无效;默认宽度是自身内容宽度)<br>
+                行内块元素: img input td (一行占据多个;宽高内外边距可设置;默认宽度是自身内容宽度)<br> 
+                块级元素有：div ul ol li dl dt dd h1-h6 p tr form hr (一行占据一个;默认宽度是父元素宽度的100%;宽高内外边距可设置)
+        </p>
+    </div>
+    <div class="second">
+        <h3  id="x7"> 7.css如何实现div垂直居中</h3>
+        <h4>7.1根据子div具体大小设置偏移</h4>
+        <p>
+            定位:子绝父相,子盒子(宽高固定){
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+            }
+        </p>
+        <p>
+            子盒子(宽高不确定) { position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%)
+            }
+        </p>
+        <div class="big" style="width: 200px; height: 200px; background-color: #ccc;">
+            <div class="small" style="width: 100px; height: 100px; background-color: pink;"></div>
+        </div>
+        <style>
+            .big {
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .small {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                /* margin-top: -50px; 
+                   margin-left: -50px;  */
+                transform: translate(-50%, -50%)
+            }
+        </style>
+        <h4>7.2利用弹性布局</h4>
+        <p>给父元素设置display: flex;
+            justify-content: center(主轴居中);
+            align-items: center(侧轴居中);</p>
+        <div class="big1" style="width: 200px; height: 200px; background-color: #ccc;">
+            <div class="small1" style="width: 100px; height: 100px; background-color: pink;">利用弹性布局设置垂直居中 </div>
+        </div>
+        <style>
+            .big1 {
+                display: flex;
+                margin: 0 auto;
+                /* 主轴居中 */
+                justify-content: center;
+                /* 侧轴居中y */
+                align-items: center;
+            }
+        </style>
+        <h4>7.3利用vertical-align</h4>
+        <p>
+            父元素:{ margin: 0 auto; display: table-cell; vertical-align: middle;}; <br>
+            子元素: {margin: 0 auto;}
+        </p>
+        <div class="big2" style="width: 200px; height: 200px; background-color: #ccc;">
+            <div class="small2" style="width: 100px; height: 100px; background-color: pink;">
+                利用vertical-align属性实现子div大小不固定垂直居中 </div>
+        </div>
+        <style>
+            .big2 {
+                margin: 0 auto;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .small2 {
+                margin: 0 auto;
+            }
+        </style>
+</body>
+
+</html>

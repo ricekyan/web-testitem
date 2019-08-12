@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2> 介绍原型  原型链 作用域链? </h2>
+    <pre>
+        原型：
+        JavaScript是一种通过原型实现继承的语言,它与别的高级语言是有区别的，例如Java.C＃是通过类型决定继承关系的，
+        JavaScript是动态的弱类型语言。总之,可以认为JavaScript中所有数据都是对象。在JavaScript中,原型也是一个对象，
+        用原型可以实现对象的属性继承,JavaScript的对象中都包含了一个"prototype"内部属性,这个属性所对应的就是该对象的原型.
+        作为对象的内部属性,"prototype"是不能直接访问的。所以,为了方便查看对象的原型，Firefox和Chrome内核的JavaScript引擎中
+        提供了"__proto__"这个非标准的访问器(ECMA 新标准中引入了标准对象原型访问器"Object.getPrototype(object)")。原型的主要作用就是实现继承与扩展对象。
+
+        原型链：
+         JavaScript中的每个对象都有一个prototype 属性，称为原型，而原型的值也是一个对象， 因此它也有自己的原型，这样就串联起了一条原型链。
+        原型链的链头是 object, 它的 prototype 比较特殊， 值为 null。原型链的作用是对象继承。 函数A的原型属性(prototype property)是一个对象，
+        当把这个函数作为构造函数来创建实例时，该函数的原型属性将作为原型赋值给所有对 象实例，比如新建一个数组，数组的方法使从数组的原型上继承而来。
+        当访问对象的一个属性时，首先查找对象本身.若找到,则返回；若未找到，贝1J继续查找其原型对象的属性(如果还找不到,实际上还会沿着原型链向上查找直到根)
+        只要没有被覆盖，对象原型的属性就能在所有的实例中找到，若整个原型链都未找到，则返回 undefined
+
+        作用域链：
+        当执行一段JavaSc1ipt代码（全局代码或函数）时，JavaScript 引擎会为其创建一个作用域，又称为执行上下文（ Execution Context ）。
+        在页面力口载后，会首先创建一个全局作用域，然后每执行一个函数，会建立一个对 应的作用域，从而形成一条作用域链。
+        每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。 作用域链的作用是解析标识符。
+        当创建（不是执行）函数时，会将this、arguments、 命名参数和该函数中的所有局部变量添加到当前作用域中 。
+        当JavaScript需要查找变量的时候（这个过程称为变量解析），它首先会从作用域链中的链尾（也就是当前作用域）查找是否有该变量属性。
+        如果没有找到，就顺着作用域链（也就是全局作用域链）继续查找，直到查找到链头。 如果仍未找到该变量，
+        就认为这段代码的作用域链上不存在该变量，并抛出一个引用错误（ Reference Error ）的异常。
+    </pre>
+</body>
+</html>

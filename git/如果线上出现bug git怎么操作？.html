@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>如果线上出现bug git怎么操作？</title>
+</head>
+<body>
+    <h2>如果线上出现bug git怎么操作？</h2>
+    <pre>
+        先暂存一下工作空间改动：
+        git stash
+        新建一个分支，并且换到这个新分支
+        git branch fix_bug //新建分支
+        git checkout fix_bug //切换分支
+        这时候就可以安心的在这个fix_bug分支改bug了，改完之后：
+        git add .
+        git commit -m "fix a bug"
+        切换到master主分支
+        git checkout master
+        从fix_bug合并到master分支
+        git merge fix_bug
+        提交代码
+        git push
+        然后从暂存区恢复代码
+        git stash pop
+    </pre>
+</body>
+</html>

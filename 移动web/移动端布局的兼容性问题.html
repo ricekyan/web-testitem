@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端兼容性如何处理</title>
+</head>
+<body>
+    <h3>移动端兼容性如何处理</h3>
+    <h4>1.安卓浏览器看背景图片时,有些设备会有模糊</h4> 
+    解决办法:使用二倍图配合CSS样式background-size来处理.
+        <br>
+        <br>
+    <h4>2.防止手机中页面的缩小和方法 </h4>
+    在mate标签中设置 user-scalable=0 的方法禁止用户对页面视图进行缩放
+        <br>
+        <br>
+    <h4>3.flxed定位缺陷</h4>
+    ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位<br>
+    android下fixed表现要比iOS更好，软键盘弹出时，不会影响fixed元素定位<br>
+    ios4下不支持position:fixed<br>
+    解决方案： 可用iScroll插件解决这个问题
+    <br>
+    <br>
+    <h4>4.IOS移动端click事件300ms的延迟响应</h4>
+    fastclick可以解决在手机上点击事件的300ms延迟<br>
+    zepto的touch模块，tap事件也是为了解决在click的延迟问题<br>
+    可以通过绑定ontouchstart事件，加快对事件的响应，解决300ms延迟问题<br>
+</body>
+</html>

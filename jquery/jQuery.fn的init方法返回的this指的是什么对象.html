@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+          text-indent: 2em;  
+        }
+        div{
+            margin: 0 auto;
+            width: 60%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div>
+        <h2> jQuery.fn的init方法返回的this指的是什么对象？为什么要返回this？</h2>
+        <p>指向一个类数组对象而不是jQuery.fn。因为jQuery对象本身就是一个类数组对象。</p>
+        <p>为什么要返回this:   'jQuery.fn.init()'相当于调用方法，this指向的以及最后返回的都是同一个jQuery.fn对象，显然，这是不合理的。而加了new，就是每次用构造函数实例化了一个新对象, 能够取得返回的jquery对象，可以进行链式调用</p>
+</div>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- // 预解析： JavaScript引擎在对JavaScript代码进行解释执行之前，会对JavaScript代码进行预解析，在预解析阶段，会将以关键字var和function开头的语句块提前进行处理。
+    // 预解析之后，代码才会从上往下依次整体执行，但是预解析执行过的代码不会重复执行。
+    // 声明相关的代码可以分为两部分：
+    // 1、变量声明 通过 var关键字定义的变量。
+    // 2、函数声明 通过 function关键字声明的函数
+    // 预解析时如果遇到重复的变量声明，那么忽略。 预解析时如果遇到重复的函数声明，保留后面的函数。 预解析时如果遇到变量与函数重名的情况，保留函数。
+    // 变量声明提升： 使用 var关键字定义的变量，被称为变量声明；
+    // 函数声明提升的特点是，在函数声明的前面，可以调用这个函数 -->
+
+
+
+    <!-- // 示例代码：函数名提升
+    // 正常函数书写方式 -->
+    <script>
+        function func() {
+            alert("函数被调用了");
+        }
+        func();
+        // 预解析之后，函数名提升
+        func();
+        function func() {
+            alert("函数被调用了");
+        }
+    </script>
+
+
+
+
+
+
+
+
+    <!-- // // 示例代码：变量名提升
+    // // 正常变量书写方式 -->
+    <!-- <script>
+        alert(a); // undefined
+        var a = 123;
+        // 由于JavaScript的预解析机制，上面这段代码，alert出来的值是undefined，
+        // 如果没有预解析，代码应该会直接报错a is not defined，而不是输出值。
+
+        // 变量的时候 提升的只是变量声明的提升，并不包括赋值
+        var a; // 这里是声明
+        alert(a); // 变量声明之后并未有初始化和赋值操作，所以这里是 undefined
+        a = 123; // 这里是赋值
+    </script> -->
+
+
+
+
+
+
+
+    <!-- // 注意：特殊情况
+    // 一、函数不能被提升的情况
+    // 函数表达式创建的函数不会提升 -->
+    <!-- <script>
+        test(); // 报错 "test is not a function"
+        var test = function () {
+            console.log(123);
+        }
+    </script> -->
+
+
+
+    
+    
+    
+    <!-- // 二、出现同名函数 -->
+    <!-- <script>
+        test(); // 打印 '好走的都是下坡路'
+
+        // 两个函数重名，这两个函数都会被提升，但是后面的函数会覆盖掉前面的函数
+        function test() {
+            console.log('众里寻她千百度，他正在自助烤肉....');
+        }
+        function test() {
+            console.log('好走的都是下坡路');
+        }
+    </script> -->
+
+
+
+
+    <!-- // 三、函数名与变量名相同
+
+    // 如果函数和变量重名，只会提升函数，变量不会被提升 -->
+    <!-- <script>
+        console.log(test); // 打印这个test函数
+
+        function test() {
+            console.log('我是test');
+        }
+
+
+
+
+        var num = 1;
+        function num() {
+            console.log(num); // 报错 “num is not a function”
+        }
+        num();
+
+        //预解析后的代码
+        function num() {
+            console.log(num);
+        }
+        num = 1;
+        num();
+    </script> -->
+
+
+
+
+
+
+
+
+    <!-- // 四、条件式的函数声明
+    // 如果是条件式的函数申明， 这个函数不会被预解析 -->
+    <!-- <script>
+        test(); // test is not a function
+        if (true) {
+            function test() {
+                console.log('只是在人群中多看了我一眼，再也忘不掉我容颜...');
+            }
+        }
+    </script> -->
+
+
+
+
+
+
+
+
+
+    <!-- 预解析是分作用域的
+    声明提升并不是将所有的声明都提升到window 对象下面，提升原则是提升到变量运行的当前作用域中去。 -->
+    <!-- <script>
+        function showMsg() {
+            var msg = 'This is message';
+        }
+        alert(msg); // 报错“Uncaught ReferenceError: msg is not defined”
+
+        预解析之后
+        function showMsg() {
+            var msg; // 因为函数本身就会产生一个作用域，所以变量声明在提升的时候，只会提升在当前作用域下最前面
+            msg = 'This is message';
+        }
+        alert(msg); // 报错“Uncaught ReferenceError: msg is not defined”
+    </script> -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- // 预解析是分段的
+        // 分段，其实就分script标签的 -->
+    <!-- <script>
+        func(); // 输出 AA2;
+        function func() {
+            console.log('AA1');
+        }
+
+        function func() {
+            console.log('AA2');
+        }
+    </script>
+    <script>
+        function func() {
+            console.log('AA3');
+        }
+    </script> -->
+
+    <!-- // 在上面代码中，第一个script标签中的两个func进行了提升，第二个func覆盖了第一个func，但是第二个script标签中的func并没有覆盖上面的第二个func。所以说预解析是分段的。 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- // tip: 但是要注意，分段只是单纯的针对函数，变量并不会分段预解析。
+        // 函数预解析的时候是分段的，但是执行的时候不分段 -->
+    <!-- <script>
+        //变量预解析是分段的 ，但是函数的执行是不分段
+        var num1 = 100;
+
+        // test3();  报错，函数预解析的时候分段，执行的时候才不分段
+        function test1() {
+            console.log('我是test1');
+        }
+
+        function test2() {
+            console.log('我是test2');
+        }
+    </script>
+
+    <script>
+        var num2 = 200;
+        function test3() {
+            console.log('test3');
+        }
+
+        test1();   // 打印 '我是test1' 函数执行的时候不分段
+        console.log(num1); // 100
+    </script> -->
+
+
+
+</body>
+
+</html>

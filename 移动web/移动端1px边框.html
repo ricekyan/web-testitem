@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端1px边框</title>
+</head>
+<body>
+    <h3>移动端1px边框 : 现在手机大多数采用retina屏,css设置成1px会被渲染成2px</h3>
+    <h4>解决办法:</h4>
+    1. 在meta标签中设置:"meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no"<br>
+    2.引入flexible.js  <br>
+    3.使用box-shadow模拟边框<br>
+    代码:
+    <pre>
+    .box-shadow-1px {
+        box-shadow: inset 0px -1px 1px -1px #c8c7cc;
+        }
+    </pre>
+</body>
+</html>

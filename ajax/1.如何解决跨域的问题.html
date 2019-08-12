@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        
+        <h1>1.jsonp方法</h1>
+    原理 ： 通过发送请求，将发送请求的参数加载地址栏中，每次发送请求随机生成不同的src属性值，<br>
+    将src写入html中生成新的跳转地址,利用src天然性可跨域的属性，实现发送请求跨域跳转的功能
+    封装代码 查看网页源码
+    <script>
+        function jsonp(options) {
+            // 创建script标签
+            var script = document.createElement('script');
+            // 生成随机函数名
+            var fnName = 'jsonp' + Math.random().toString().replace('.', '') + new Date().getTime();
+            // 为全局作用域下添加一个属性 属性的名字就是我们随机生成的函数名
+            // 让属性的值指向调用jsonp函数时传递的success
+            window[fnName] = options.success;
+            // 参数
+            var params = '';
+            // 循环用户传递的参数
+            for (var attr in options.data) {
+                params += '&' + attr + '=' + options.data[attr]
+            }
+            // 为script标签设置src属性
+            script.src = options.url + '?callback=' + fnName + params;
+            // 将html标签追加到页面中
+            document.body.appendChild(script);
+            // 当script标签加载完成之后
+            script.onload = function () {
+                // 将script标签从页面中删除
+                document.body.removeChild(this);
+            }
+        }
+    </script>
+
+   <h2> 2.CORS 跨域资源共享</h2>
+
+    原理：它允许浏览器向跨域服务器发送 Ajax 请求，克服了 Ajax 只能同源使用的限制，服务器上实现网址跳转<br>
+
+    ```
+    客户端不需要改变，服务端设置中间件，中间件中定义哪些客户端可以访问，哪些请求方式可以访问
+    封装代码 查看网页源码
+    <script>
+        // 引入express框架
+        const express = require('express');
+        // 拦截所有的请求
+        app.use((req, res, next) => {
+            //允许哪些客户端访问我
+            //*代表允许所有的客户端可以访问我
+            res.header('Access-Control-Allow-Origin', '*')
+            //允许客户端使用哪些请求方法访问我
+            res.header('Access-Control-Allow-Methods', 'get,post')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>new操作符具体干了什么</h2>
+    <pre>
+new共经过了4几个阶段      
+1、创建一个空对象
+varobj=new Object();
+2、设置原型链
+obj.__proto__= Func.prototype;
+3、让Func中的this指向obj，并执行Func的函数体。
+var result =Func.call(obj);
+4、判断Func的返回值类型：
+如果是值类型，返回obj。如果是引用类型，就返回这个引用类型的对象。  
+        if (typeof(result) == "object"){
+          func=result;
+        }
+        else{
+            func=obj;;
+
+    </pre>
+</body>
+</html>

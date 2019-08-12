@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>假设一个新员工，在本地git的A分支被误删了，A分支代码没有被push到远程，如何找到之前A的提交记录和代码</title>
+</head>
+<body>
+    <h2>假设一个新员工，在本地git的A分支被误删了，A分支代码没有被push到远程，如何找到之前A的提交记录和代码</h2>
+    <pre>
+    git log -g //查看所有日志记录 ，找到刚刚分支提交的时候的commit id ，仅复制id 
+    git branch 新分支名 提交id //新建一个分支，这时候新的分支上就是刚刚提交的版本的内容 
+    然后
+    git checkout master ==》git merge 分支名 ==> git pus
+    </pre>
+</body>
+</html>

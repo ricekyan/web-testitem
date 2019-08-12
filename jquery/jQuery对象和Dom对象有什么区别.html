@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+          text-indent: 2em;  
+        }
+        div{
+            margin: 0 auto;
+            width: 60%;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+<div>
+    <pre>
+        <h2>Dom对象与JQuery对象有什么区别？</h2>
+        <pre>
+                ​  jquery对象是DOM对象通过jquery包装后的产物，是jquery独有的。
+
+                ​  jquery里的方法只有jquery对象才可以使用。
+                <b>
+                    二者之间可以相互转换：</b>
+
+                    DOM 对象转 jQuery 对象:
+                    var oDiv = document.querySelector('div'); // DOM 对象
+                    DOM 对象转 jQuery 对象，用 $() 包起来
+                    $(oDiv).css('background', 'red');
+               
+                
+                    jQuery 对象转 DOM 对象:
+                    var $div = $("div"); // jQuery 对象
+                    $div[0]
+                    $div.get(0)
+             
+                
+                
+        </pre>
+    </pre>
+</div>
+
+
+    
+</body>
+</html>

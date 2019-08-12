@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            background-color: #09f;
+        }
+        
+        .two {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+        }
+        
+        .three {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: yellow;
+        }
+        
+        .four {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h4>问题引入： 一个DOM元素绑定两个事件，一个冒泡，一个捕获，则事件会执行多少次，执行顺序如何。</h4>
+
+    <!-- addEventListener参数 element.addEventListener(type,function, useCapture) 【事件类型】，【事件处理程序】，【可选。布尔值，指定事件是否在捕获或冒泡阶段执行。true：事件句柄在捕获阶段执行；false：默认。事件句柄在冒泡阶段执行】 -->
+
+    <!-- 1.冒泡:冒泡是从下向上，DOM元素绑定的事件被触发时，此时该元素为目标元素，目标元素执行后，它的的祖元素绑定的事件会向上顺序执行。 如下代码所示，四个嵌套的div： addEventListener函数的第三个参数设置为false说明不为捕获事件，即为冒泡事件。 -->
+
+    <div class='one'>
+        <div class='two'>
+            <div class='three'>
+                <div class='four'>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var one = document.querySelector('.one');
+        var two = document.querySelector('.two');
+        var three = document.querySelector('.three');
+        var four = document.querySelector('.four');
+        // one.addEventListener('click', function() {
+        //     console.log('one');
+        // }, false);
+        // two.addEventListener('click', function() {
+        //     console.log('two');
+        // }, false);
+        // three.addEventListener('click', function() {
+        //     console.log('three');
+        // }, false);
+        // four.addEventListener('click', function() {
+        //     console.log('four');
+        // }, false);
+        //代码的执行顺序是： 
+        //点击one元素，输出one； 
+        //点击two元素，输出two one; 
+        //点击three元素，输出 three two one； 
+        //点击four元素，输出 four three two one；
+
+
+
+        //2.捕获
+        //捕获则和冒泡相反，目标元素被触发后，会从目标元素的最顶层的祖先元素事件往下执行到目标元素为止。
+        //将上面的代码第三个参数均改为true，事件为捕获阶段执行。 
+        //注意： 在事件处理程序中删除目标元素也能阻止事件冒泡，目标元素在文档中是事件冒泡的前提。
+
+        // one.addEventListener('click', function() {
+        //     console.log('one');
+        // }, true);
+        // two.addEventListener('click', function() {
+        //     console.log('two');
+        // }, true);
+        // three.addEventListener('click', function() {
+        //     console.log('three');
+        // }, true);
+        // four.addEventListener('click', function() {
+        //     console.log('four');
+        // }, true);
+
+        //则执行结果如下：
+
+        //点击one，输出one； 
+        //点击two，输出one two； 
+        //点击three，输出one two three； 
+        //点击four，输出one two three four；
+        //很明显执行顺序是不同的。
+
+
+
+        //3.当一个元素绑定两个事件，一个冒泡，一个捕获
+        //首先，无论是冒泡事件还是捕获事件，元素都会先执行捕获阶段。
+
+        //从上往下，如有捕获事件，则执行；一直向下到目标元素后，从目标元素开始向上执行冒泡元素，即第三个参数为true表示捕获阶段调用事件处理程序，如果是false则是冒泡阶段调用事件处理程序。(在向上执行过程中，已经执行过的捕获事件不再执行，只执行冒泡事件。)
+
+        //如下代码：
+
+        one.addEventListener('click', function() {
+            console.log('one');
+        }, true);
+        two.addEventListener('click', function() {
+            console.log('two');
+        }, false);
+        three.addEventListener('click', function() {
+            console.log('three');
+        }, true);
+        four.addEventListener('click', function() {
+            console.log('four');
+        }, false);
+
+        //此时点击four元素，four元素为目标元素，one为根元素祖先，从one开始向下判断执行。
+
+        //分析： 
+        //one为捕获事件，输出one； 
+        //two为冒泡事件，忽略； 
+        //three为捕获时间，输出three； 
+        //four为目标元素，开始向上冒泡执行，输出four；（从此处分为两部分理解较容易。） 
+        //three为捕获已执行，忽略; 
+        //two为冒泡事件，输出two； 
+        //one为捕获已执行，忽略。
+
+        //最终执行结果为： one three four two
+        //例如，three作为目标元素，执行结果为：one three two(因为two是冒泡事件，在向下执行时没有执行到)。
+        //执行次数：绑定了几个事件便执行几次。
+
+
+        //如下代码，two元素绑定了两个不同事件，点击two都会执行这两个事件。而执行顺序有所差异。
+        // one.addEventListener('click', function() {
+        //     console.log('one');
+        // }, true);
+        // two.addEventListener('click', function() {
+
+        //     console.log('two,bubble');
+        // }, false);
+        // two.addEventListener('click', function() {
+        //     console.log('two,capture');
+        // }, true);
+        // three.addEventListener('click', function() {
+        //     console.log('three,bubble');
+        // }, true);
+        // four.addEventListener('click', function() {
+        //     console.log('four');
+        // }, true);
+
+        //1、如果two为目标元素，目标元素的同类型事件按顺序执行，而其他元素根据W3C的标准执行，即先捕获后冒泡。
+
+        //点击two执行结果：one(因为是two的父元素支持捕获事件所以先执行) two,bubble 
+        //two,capture(顺序执行，注意逗号不是间隔，是输出内容。)
+
+        //2、如果目标元素不是two，则two的同类型事件按先捕获后冒泡触发执行，也就是跟前面讨论的执行过程是一样的，只不过两个事件都绑定在同一个DOM元素上。
+
+        //点击three执行结果：one two,capture three,bubble two,bubble
+
+
+        //总结:
+        //绑定在被点击元素的事件是按照代码顺序发生。 
+        //其他元素通过冒泡或者捕获“感知”的事件。 
+        //按照W3C的标准，先发生捕获事件，后发生冒泡事件。所有事件的顺序是：其他元素捕获阶段事件 -> 本元素代码顺序事件 -> 其他元素冒泡阶段事件 。
+        //行次数：绑定了几个事件便执行几次。
+    </script>
+</body>
+
+</html>

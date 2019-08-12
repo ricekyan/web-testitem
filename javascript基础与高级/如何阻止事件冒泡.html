@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h2>如何阻止事件冒泡</h2>
+<pre>
+事件冒泡:
+DOM中，树状结构决定了子元素肯定在父元素里，所以点击子元素，就同时点击了子元素和父元素，以及父元素的父元素，以此类推，当然最终的根节点都是文档，以及window。
+试想，当一个子元素被点击的时候，不仅仅这个元素本身被点击了，因为这个元素也在其上一级父元素中(属于父级元素的地盘)，所以相当于其父元素也被点击了，以此类推，一层一层往外推，最终整个文档也是被点击了，如果每个层级的节点元素都绑定了click事件，那么每个节点的click事件函数都会被执行。举个形象的例子，一个村里的人被打了（click），首先就要按照村里的规矩处理，同时这个村属于某个乡镇，当然也是相当于这个乡镇的人被打了，那么也要按照这个乡镇的规矩处理，以此一层一层往上报。这个例子不准确的地方就是，现实中一个人因为一个事件只会被处理一次，不会因为同一件事情多次处理。       
+以上这个事件从触发节点开始，逐层向上级元素传递的过程，就被形象地称为事件冒泡。以下例子很清晰展示了这个过程。
+
+如何阻止:
+
+一共两种方法:
+1.event.stopPropagation(); 
+事件处理过程中，阻止了事件冒泡，但不会阻击默认行为
+2.return false; 
+事件处理过程中，阻止了事件冒泡，也阻止了默认行为
+
+第一种方法大概解释:
+
+阻止事件继续往上层传递的过程
+利用事件的stopPropagation()函数终止往父级元素冒泡的过程。
+注意 该方法具有兼容性的问题，Event.stopPropagation()在支持W3C的浏览器中使用没有问题，但是在IE浏览器就失效了，在IE中使用 Event.cancelBubble=true来代替：
+
+if (Event.stopPropagation){
+Event.stopPropagation(); }else{
+Event.cancelBubble=true;
+}
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+
+答：
+1、父级 div 定义 height 原理：父级 div 手动定义 height，就解决了父级div 无法自动获取到高度的问题。简单、代码少、容易掌握 ，但只适合高度固定的布局.
+ 2、结尾处加空 div 标签 clear：both 原理：在浮动元素的后面添加一个空 div 兄弟元素，利用css 提高的clear：both清除浮动，让父级 div 能自动获取到高度 ，如果页面浮动布局多，就要增加很多空div，让人感觉很不好 .
+3、父级 div 定义 伪类：after 和 zoom /*清除浮动代码*/ 
+```css
+  .clearfix：after{
+     content：""；
+   display：block；
+   visibility：hidden； height：0； line-height：0； clear：both；}
+   .clearfix{
+       zoom：1
+       } 
+```
+原理：IE8 以上和非 IE 浏览器才支持：after，原理和方法2 有点类似，zoom(IE专有属性)可解决 ie6，ie7 浮动问题 ，推荐使用，建议定义公共类，以减少CSS代码。
+4、父级 div 定义 overflow：hidden 超出盒子部分会被隐藏，不推荐使用. 
+5. 双伪元素法：
+ .clearfix：before，
+.clearfix：after { content： ""； display： block；clear：both； }
+.clearfix {zoom： 1；} 

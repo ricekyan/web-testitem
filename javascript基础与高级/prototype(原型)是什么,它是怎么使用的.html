@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>prototype(原型)是什么,它是怎么使用的</h2>
+    <pre>
+JavaScript 规定，每一个构造函数都有一个 `prototype` 属性，该属性是一个对象。
+这个对象的所有属性和方法，都会被构造函数的所拥有。
+这也就意味着，我们可以把所有对象实例需要共享的属性和方法直接定义在 `prototype` 对象上。
+function Person (name, age) {
+    this.name = name
+    this.age = age
+  }
+  console.log(Person.prototype)
+  Person.prototype.type = 'human'
+  Person.prototype.sayName = function () {
+    console.log(this.name)
+  }
+  var p1 = new Person(...)
+  var p2 = new Person(...)
+  console.log(p1.sayName === p2.sayName) // => true
+    </pre>
+</body>
+</html>

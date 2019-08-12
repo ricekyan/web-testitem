@@ -1,0 +1,31 @@
+28、什么是闭包（closure），为什么要用它？
+简单的理解是函数的嵌套形成闭包，闭包包括函数本身已经它的外部作用域
+使用闭包可以形成独立的空间，延长变量的生命周期，报存中间状态值
+
+
+、什么是闭包（closure），为什么要用？
+执行say667()后,say667()闭包内部变量会存在,而闭包内部函数的内部变量不会存在.使得Javascript的垃圾回收机制GC不会收回say667()所占用的资源，因为say667()的内部函数的执行需要依赖say667()中的变量。这是对闭包作用的非常直白的描述.
+  function say667() {
+    // Local variable that ends up within closure
+    var num = 666;
+    var sayAlert = function() { alert(num); }
+    num++;
+    return sayAlert;
+}
+ var sayAlert = say667();
+ sayAlert()//执行结果应该弹出的667  
+
+
+ 闭包是什么，有什么特性，对页面有什么影响
+    答：我的理解是，闭包就是能够读取其他函数内部变量的函数。在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
+	function outer(){
+    var num = 1;
+    function inner(){
+        var n = 2;
+        alert(n + num);
+    }
+    return inner;
+}
+outer()();
+
+http://blog.csdn.net/gaoshanwudi/article/details/7355794 此链接可查看（问这个问题的不是一个公司）

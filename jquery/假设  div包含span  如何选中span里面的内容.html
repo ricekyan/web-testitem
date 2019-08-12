@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>准确的说，提取span标签中间的内容可以使用javascript实现或者使用jQuery实现</h1>
+  <h2>1、使用javascript实现</h2>
+  <p>a、为span设置一个id，写如下js代码</p>
+  <p>var value=document.getElementById("span的id属性").innerHTML;</p>
+  <p>var value=document.getElementById("span的id属性").innerText;</p>
+  <p>就可以取出下面的span标签中间的文本</p>
+  <p>innerHTML和innerText的区别再是能否识别html标签</p>
+  <h2>2、使用jQuery实现</h2>
+  <h3>a、为span设置一个id，写如下jquery代码</h3>
+  <p>$("#span的id属性").html()</p>
+  <p>$("#span的id属性").text()</p>
+  <h3>b、不设置任何属性</h3>
+  <p>$("div span").html()取出div下第一个span的内容</p>
+  <p> $("div span").text()取出div下所有span的内容</p>
+</body>
+
+</html>
